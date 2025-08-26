@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="nl" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ShinBuilds</title>
+    <meta name="description" content="ShinBuilds | Programma, progress en socials. SBD: 510 kg (160/130/220)." />
+    <meta property="og:title" content="ShinBuilds" />
+    <meta property="og:description" content="Programma, progress en socials. SBD: 510 kg (160/130/220)." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourusername.github.io/shinbuilds" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🏋️‍♂️</text></svg>">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#e5e5e5',
+                            300: '#d4d4d4',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#0a0a0a'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Helvetica', 'Arial'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco']
+                    },
+                    boxShadow: {
+                        soft: '0 10px 30px -10px rgba(0,0,0,0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP + ScrollTrigger (CDN) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Subtiel raster (zwart/wit) */
+        .grid-bg {
+            background-image:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px, 40px 40px;
+            background-position: center, center;
+        }
+    </style>
+</head>
+
+<body class="bg-ink-900 text-ink-100 antialiased selection:bg-white/20">
+    <!-- Nav -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-ink-900/75 border-b border-white/10">
+        <div class="mx-auto max-w-5xl px-4">
+            <div class="flex h-14 items-center justify-between">
+                <a href="#home" class="group inline-flex items-center gap-2">
+                    <span class="inline-grid place-items-center h-7 w-7 rounded-md bg-white text-ink-900">S</span>
+                    <span class="font-semibold tracking-tight">ShinBuilds</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-6 text-sm">
+                    <a href="#program" class="text-ink-400 hover:text-white">Programma</a>
+                    <a href="#socials" class="text-ink-400 hover:text-white">Socials</a>
+                    <a href="#contact" class="text-ink-400 hover:text-white">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="grid-bg">
+        <div class="mx-auto max-w-5xl px-4 py-20 md:py-28">
+            <div class="grid items-center gap-10 md:grid-cols-2">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight" data-animate="fade-up">
+                        Omdat ik steeds vragen krijg over mijn programma
+                    </h1>
+                    <p class="mt-5 text-ink-300 md:text-lg max-w-prose" data-animate="fade-up" data-delay="0.08">
+                        Mijn huidige 4‑dagen powerbuilding‑programma. Geen poespas—alleen de lifts die tellen.
+                    </p>
+                    <p class="mt-4 text-sm text-ink-400" data-animate="fade-up" data-delay="0.12">
+                        <span class="font-semibold">SBD</span>: 510 kg
+                        <span class="opacity-80">(SQ 160 • BP 130 • DL 220)</span>
+                    </p>
+                    <div class="mt-8 flex flex-wrap items-center gap-3" data-animate="fade-up" data-delay="0.16">
+                        <a href="#program"
+                            class="group rounded-xl bg-white text-ink-900 px-5 py-3 font-semibold shadow-soft hover:-translate-y-0.5 transition will-change-transform">📓
+                            Bekijk Programma</a>
+                        <a href="#socials" class="rounded-xl border border-white/10 px-5 py-3 hover:bg-white/5">📲
+                            Volgen</a>
+                    </div>
+                </div>
+
+                <!-- Hero image + stat chips -->
+                <div class="relative" data-animate="fade-up" data-delay="0.1">
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-2 shadow-soft">
+                        <div class="relative overflow-hidden rounded-xl ring-1 ring-white/10">
+                            <!-- Replace with your actual image file placed next to this HTML as 'image.jpg' -->
+                            <img src="/image.webp" alt="ShinBuilds – athlete"
+                                class="w-full h-full object-cover aspect-[4/5]" />
+
+                            <!-- Top-left SBD total badge -->
+                            <div
+                                class="absolute top-3 left-3 rounded-lg bg-ink-900/70 backdrop-blur px-3 py-1.5 border border-white/10 text-xs font-semibold">
+                                SBD Totaal: 510 kg
+                            </div>
+
+                            <!-- Bottom-left chips -->
+                            <div class="absolute bottom-3 left-3 flex flex-wrap gap-2">
+                                <span
+                                    class="rounded-md bg-ink-900/70 backdrop-blur px-2.5 py-1 border border-white/10 text-xs font-mono">SQ
+                                    160</span>
+                                <span
+                                    class="rounded-md bg-ink-900/70 backdrop-blur px-2.5 py-1 border border-white/10 text-xs font-mono">BP
+                                    130</span>
+                                <span
+                                    class="rounded-md bg-ink-900/70 backdrop-blur px-2.5 py-1 border border-white/10 text-xs font-mono">DL
+                                    220</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Hero image + stat chips -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Program -->
+    <section id="program" class="relative">
+        <div class="mx-auto max-w-5xl px-4 py-16">
+            <div class="mb-8 flex items-end justify-between gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight">📓 Huidig Programma (4 dagen / 4 weken)
+                    </h2>
+                    <p class="mt-2 text-ink-400">Eenvoudig. Zwart‑wit. Doen.</p>
+                </div>
+                <button id="copyBtn"
+                    class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5">Kopieer als
+                    Markdown</button>
+            </div>
+
+            <!-- Weeks RPE -->
+            <div class="grid gap-4 md:grid-cols-5" data-animate="stagger">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div class="text-ink-400 text-xs">Week 1</div>
+                    <div class="text-lg font-semibold">RPE 6</div>
+                    <div class="text-sm text-ink-300">±3–4 RIR</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div class="text-ink-400 text-xs">Week 2</div>
+                    <div class="text-lg font-semibold">RPE 6.5–7</div>
+                    <div class="text-sm text-ink-300">±2–3 RIR</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div class="text-ink-400 text-xs">Week 3</div>
+                    <div class="text-lg font-semibold">RPE 7.5–8</div>
+                    <div class="text-sm text-ink-300">±1–2 RIR</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div class="text-ink-400 text-xs">Week 4</div>
+                    <div class="text-lg font-semibold">RPE 8–8.5</div>
+                    <div class="text-sm text-ink-300">top sets</div>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div class="text-ink-400 text-xs">Week 5</div>
+                    <div class="text-lg font-semibold">Deload</div>
+                    <div class="text-sm text-ink-300">RPE 5–6 • 50–60% volume</div>
+                </div>
+            </div>
+
+            <!-- Days -->
+            <div class="mt-10 grid gap-6 md:grid-cols-2" data-animate="stagger">
+                <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <header class="mb-3 flex items-center justify-between">
+                        <h3 class="text-xl font-bold">🏁 Dag 1 — Squat Heavy + Bench techniek</h3>
+                    </header>
+                    <ul class="space-y-2 text-sm">
+                        <li>Back Squat — <strong>4×4</strong> (volgens week‑RPE)</li>
+                        <li>Spoto Bench (1–2s pause) — <strong>3×5</strong></li>
+                        <li>Leg Press — <strong>3×10</strong> @ 6–8</li>
+                        <li>Leg Curl — <strong>3×12</strong> @ 8</li>
+                    </ul>
+                </article>
+                <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <header class="mb-3 flex items-center justify-between">
+                        <h3 class="text-xl font-bold">💪 Dag 2 — Bench Volume + Upper Back + Core</h3>
+                    </header>
+                    <ul class="space-y-2 text-sm">
+                        <li>Competition Bench — <strong>4×5</strong></li>
+                        <li>Chest‑Supported/Seal Row — <strong>4×8</strong> @ 7–8</li>
+                        <li>Face Pulls — <strong>3×15</strong> @ 7–8</li>
+                        <li>Hanging Leg Raise — <strong>3×10</strong> @ 8</li>
+                        <li>(Optioneel) Incline DB Bench — <strong>2×10</strong> @ 6–7</li>
+                    </ul>
+                </article>
+                <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <header class="mb-3 flex items-center justify-between">
+                        <h3 class="text-xl font-bold">⚡ Dag 3 — Deadlift Heavy + Front Squat + DL‑techniek</h3>
+                    </header>
+                    <ul class="space-y-2 text-sm">
+                        <li>Slack Pulls / Iso DL tegen pin — <strong>3–4×(3–5s)</strong> (in warm‑up)</li>
+                        <li>Deadlift — <strong>3×3–4</strong></li>
+                        <li>Paused Deadlift (1s net onder knie) — <strong>3×2–3</strong></li>
+                        <li>Front Squat — <strong>3×5</strong></li>
+                    </ul>
+                </article>
+                <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <header class="mb-3 flex items-center justify-between">
+                        <h3 class="text-xl font-bold">🎯 Dag 4 — Bench Intensity + Squat Stabiliteit</h3>
+                    </header>
+                    <ul class="space-y-2 text-sm">
+                        <li>Close‑Grip Bench — <strong>5×4</strong></li>
+                        <li>Pause Squat (2s in de hole) — <strong>4×3</strong></li>
+                        <li>Pull‑ups/Lat Pulldown — <strong>3×6–10</strong> @ 7–8</li>
+                        <li>Step‑Ups — <strong>2×10</strong> @ 6–7 (of BSS)</li>
+                        <li>Cable Crunch — <strong>3×12</strong> @ 8</li>
+                    </ul>
+                </article>
+            </div>
+
+            <!-- Notes -->
+            <div class="mt-8 grid gap-6 md:grid-cols-2" data-animate="stagger">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <h4 class="font-semibold">🧭 Notes</h4>
+                    <ul class="mt-2 space-y-2 text-sm text-ink-300">
+                        <li>Top/back‑off: 1 topset (bv. 4@RPE7) + 2–3 back‑offs −6–8%.</li>
+                        <li>RPE te hoog → −2.5–5 kg of 1 accessoire‑set schrappen.</li>
+                        <li>Slaap &lt;6u / hoge stress → onderkant RPE‑range.</li>
+                        <li>Deload in week 5; heropbouw vanaf RPE 6.</li>
+                        <li>Eiwit 1.8–2.2 g/kg/dag; onderhoud kcal; carbs rond training.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Socials -->
+    <section id="socials" class="relative border-t border-white/10">
+        <div class="mx-auto max-w-5xl px-4 py-16">
+            <div class="mb-6">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight">📲 Socials</h2>
+                <p class="mt-2 text-ink-400">Daily lifts, tips en progress.</p>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2" data-animate="stagger">
+                <a href="https://www.instagram.com/shinbuilds" target="_blank"
+                    class="group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="inline-grid h-10 w-10 place-items-center rounded-xl bg-white text-ink-900">📸</span>
+                        <div>
+                            <div class="font-semibold">Instagram</div>
+                            <div class="text-sm text-ink-300">@shinbuilds</div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.tiktok.com/@shinbuilds" target="_blank"
+                    class="group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="inline-grid h-10 w-10 place-items-center rounded-xl bg-white text-ink-900">🎬</span>
+                        <div>
+                            <div class="font-semibold">TikTok</div>
+                            <div class="text-sm text-ink-300">@shinbuilds</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section id="contact" class="relative border-t border-white/10">
+        <div class="mx-auto max-w-5xl px-4 py-16">
+            <div
+                class="rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10 grid gap-6 md:grid-cols-2 items-center">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold">Samen bouwen? 💬</h2>
+                    <p class="mt-2 text-ink-300">DM via Instagram of TikTok.</p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="https://www.instagram.com/shinbuilds" target="_blank"
+                            class="rounded-xl bg-white text-ink-900 px-5 py-3 font-semibold shadow-soft hover:-translate-y-0.5 transition">DM
+                            op Instagram</a>
+                        <a href="https://www.tiktok.com/@shinbuilds" target="_blank"
+                            class="rounded-xl border border-white/10 px-5 py-3 hover:bg-white/5">Open TikTok</a>
+                    </div>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-ink-900 p-6">
+                    <pre class="text-xs leading-relaxed text-ink-300 overflow-x-auto"><code>// GitHub Pages
+1. Maak repo public
+2. Settings → Pages → Deploy from branch
+3. Branch: main, folder: /
+4. Commit & push → live</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10">
+        <div class="mx-auto max-w-5xl px-4 py-10 text-sm text-ink-400 flex items-center justify-between">
+            <span>© <span id="year"></span> ShinBuilds</span>
+            <a class="hover:text-white" href="#home">Top ↑</a>
+        </div>
+    </footer>
+
+    <!-- Markdown export (exact zoals aangeleverd) -->
+    <script id="program-md" type="text/plain">## Huidig Programma (4 dagen / 4 weken)
+
+**Week RPE**
+- W1: RPE 6 (±3–4 RIR)
+- W2: RPE 6.5–7 (±2–3 RIR)
+- W3: RPE 7.5–8 (±1–2 RIR)
+- W4: RPE 8–8.5 (tops sets)
+- W5: Deload (RPE 5–6, 50–60% volume)
+
+**Dag 1 — Squat Heavy + Bench techniek**
+- Back Squat — 4×4 (volgens week‑RPE)
+- Spoto Bench (1–2s pause) — 3×5
+- Leg Press — 3×10 @ 6–8
+- Leg Curl — 3×12 @ 8
+
+**Dag 2 — Bench Volume + Upper Back + Core**
+- Competition Bench — 4×5
+- Chest‑Supported/Seal Row — 4×8 @ 7–8
+- Face Pulls — 3×15 @ 7–8
+- Hanging Leg Raise — 3×10 @ 8
+- (Optioneel) Incline DB Bench — 2×10 @ 6–7
+
+**Dag 3 — Deadlift Heavy + Front Squat + DL‑techniek**
+- Slack Pulls / Iso DL tegen pin — 3–4×(3–5s) in warm‑up
+- Deadlift — 3×3–4
+- Paused DL (1s net onder knie) — 3×2–3
+- Front Squat — 3×5
+
+**Dag 4 — Bench Intensity + Squat Stabiliteit**
+- Close‑Grip Bench — 5×4
+- Pause Squat (2s in de hole) — 4×3
+- Pull‑ups/Lat Pulldown — 3×6–10 @ 7–8
+- Step‑Ups — 2×10 @ 6–7 (of BSS)
+- Cable Crunch — 3×12 @ 8
+
+**Notes**
+- Top/back‑off: 1 topset (bv. 4@RPE7) + 2–3 back‑offs −6–8%.
+- RPE te hoog → −2.5–5 kg of 1 accessoire‑set schrappen.
+- Slaap <6u / hoge stress → onderkant RPE‑range.
+- Deload in week 5; heropbouw vanaf RPE 6.
+- Eiwit 1.8–2.2 g/kg/dag; onderhoud kcal; carbs rond training.</script>
+
+    <!-- GSAP Animations (subtiel) -->
+    <script>
+        window.addEventListener('load', () => {
+            const { gsap } = window;
+            if (!gsap) return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Fade-up
+            document.querySelectorAll('[data-animate="fade-up"]').forEach((el) => {
+                gsap.from(el, {
+                    y: 20,
+                    opacity: 0,
+                    duration: .7,
+                    ease: 'power3.out',
+                    delay: parseFloat(el.dataset.delay || '0'),
+                    scrollTrigger: { trigger: el, start: 'top 85%' }
+                });
+            });
+
+            // Float effect (optional: keep for cards with data-animate="float")
+            document.querySelectorAll('[data-animate="float"]').forEach((el) => {
+                gsap.to(el, { y: -6, duration: 2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+            });
+
+            // Staggered
+            document.querySelectorAll('[data-animate="stagger"]').forEach((wrap) => {
+                const items = wrap.children;
+                gsap.from(items, { opacity: 0, y: 14, duration: .5, ease: 'power2.out', stagger: .06, scrollTrigger: { trigger: wrap, start: 'top 85%' } });
+            });
+
+            // Copy MD
+            const btn = document.getElementById('copyBtn');
+            if (btn) {
+                btn.addEventListener('click', async () => {
+                    const md = document.getElementById('program-md').textContent;
+                    try {
+                        await navigator.clipboard.writeText(md);
+                        btn.textContent = 'Gekopieerd!';
+                        setTimeout(() => (btn.textContent = 'Kopieer als Markdown'), 1500);
+                    } catch (e) {
+                        alert('Kopieer mislukt, selecteer en kopieer handmatig.');
+                    }
+                });
+            }
+
+            // Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+
+</html>
